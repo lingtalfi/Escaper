@@ -4,7 +4,7 @@ EscapeTool
 
 
 
-A tool to escape strings.
+A tool helping with string escaping.
 
 
 
