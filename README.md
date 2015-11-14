@@ -24,6 +24,19 @@ special on your machine, the default encoding is utf-8.
 
 
 
+getNextUnescapedSymbolPos
+----------------------------
+2015-11-14
+
+Returns the position of the next unescaped given symbol, or false.
+
+
+int|false       getNextUnescapedSymbolPos ( str:string, str:symbol, int:startPos=0, bool:modeRecursive=true, str:escSymbol='\\' )
+
+
+
+
+
 isEscapedPos
 ---------------
 2015-11-13
@@ -54,6 +67,11 @@ Dependencies
 History Log
 ------------------
     
+- 1.1.0 -- 2015-11-14
+
+    - add getNextUnescapedSymbolPos 
+
+
 - 1.0.0 -- 2015-11-13
 
     - initial commit

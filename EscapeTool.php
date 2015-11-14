@@ -6,13 +6,39 @@ namespace Escaper;
  * LingTalfi 2015-11-13
  * 
  * Every method has a modeRecursive argument.
- * If true (default), it uses the recursive escape mode.
- * If false, it uses the simple escape mode.
+ *      If true (default), it uses the recursive escape mode.
+ *      If false, it uses the simple escape mode.
+ * 
+ * All methods use the php mb_ functions internally.
+ * 
  * 
  */
 
 class EscapeTool
 {
+
+    /**
+     *
+     * Returns the position of the next unescaped given symbol, or false.
+     * 
+     *
+     * @return false|int
+     *                  false is returned if the given value does not contain the unescaped symbol.
+     *                  Returns the mb position of the next unescaped symbol otherwise.
+     */
+    public static function getNextUnescapedSymbolPos($string, $symbol, $startPos = 0, $modeRecursive = true, $escSymbol = '\\')
+    {
+        $ret = false;
+        $len = mb_strlen($symbol);
+        while (false !== $pos = mb_strpos($string, $symbol, $startPos)) {
+            if (false === self::isEscapedPos($string, $pos, $modeRecursive, $escSymbol)) {
+                $ret = $pos;
+                break;
+            }
+            $startPos = $pos + $len;
+        }
+        return $ret;
+    }
 
 
     /**
