@@ -23,8 +23,8 @@ $a = [
     ['abc\\\"def', '"', 0],
     ['abc\\\\\"def', '"', 0],
     // utf-8
-    ['été"def', '"', 0],
-    ['été\"def', '"', 0],
+    ['été"def', '"', 0, true, '\\', true],
+    ['été\"def', '"', 0, true, '\\', true],
     // other symbol
     ['abc"def', '"', 0, true, '*'],
     ['abc\"def', '"', 0, true, '*'],    
@@ -46,8 +46,8 @@ $a = [
     ['abc\\\"def', '"', 0, false],
     ['abc\\\\\"def', '"', 0, false],
     // utf-8
-    ['été"def', '"', 0, false],
-    ['été\"def', '"', 0, false],
+    ['été"def', '"', 0, false, '\\', true],
+    ['été\"def', '"', 0, false, '\\', true],
     // other symbol
     ['abc"def', '"', 0, false, '*'],
     ['abc\"def', '"', 0, false, '*'],

@@ -24,16 +24,48 @@ special on your machine, the default encoding is utf-8.
 
 
 
+getEscapedSymbolPositions
+-----------------------
+2015-11-16
+
+
+Returns the positions of the escaped symbols in a given string, or false if there is no escaped symbol in the string or if there is an error.
+
+```
+false|array:positions       getEscapedSymbolPositions( str:string, str:symbol, int:offset=0, bool:modeRecursive = true, str:escSymbol=\ )
+```
+
+### Examples
+
+```php
+<?php
+
+
+use Escaper\EscapeTool;
+
+require_once "bigbang.php";
+
+$string = 'He\"ll\"o "there';
+$pos = EscapeTool::getEscapedSymbolPositions($string, '"');
+a($pos);  // prints [3,7]
+
+```
+
+
+
+
+
+
+
 getNextUnescapedSymbolPos
 ----------------------------
 2015-11-14
 
 Returns the position of the next unescaped given symbol, or false.
 
-
+```
 int|false       getNextUnescapedSymbolPos ( str:string, str:symbol, int:startPos=0, bool:modeRecursive=true, str:escSymbol='\\' )
-
-
+```
 
 
 
@@ -66,6 +98,12 @@ Dependencies
 
 History Log
 ------------------
+    
+- 1.2.0 -- 2015-11-16
+
+    - add getEscapedSymbolPositions 
+    - fix btests:escapeTool.getNextUnescapedSymbolPos utf-8 calls 
+    
     
 - 1.1.0 -- 2015-11-14
 

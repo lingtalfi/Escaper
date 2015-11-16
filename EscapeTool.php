@@ -9,18 +9,43 @@ namespace Escaper;
  *      If true (default), it uses the recursive escape mode.
  *      If false, it uses the simple escape mode.
  * 
- * All methods use the php mb_ functions internally.
+ * All methods in this class use the php's mb_ functions internally.
  * 
  * 
  */
 
+use Bat\StringTool;
+
 class EscapeTool
 {
+
+
+    /**
+     *
+     * Returns the positions of the escaped symbols in a given string, or false if there is no escaped symbol
+     * in the string or if there is an error.
+     *
+     * @return false|array
+     */
+    public static function getEscapedSymbolPositions($string, $symbol, $offset = 0, $modeRecursive = true, $escSymbol = '\\')
+    {
+        $ret = false;
+        $pos = StringTool::strPosAll($string, $symbol, $offset);
+        if ($pos) {
+            foreach ($pos as $p) {
+                if (true === self::isEscapedPos($string, $p, $modeRecursive, $escSymbol)) {
+                    $ret[] = $p;
+                }
+            }
+        }
+        return $ret;
+    }
+
 
     /**
      *
      * Returns the position of the next unescaped given symbol, or false.
-     * 
+     *
      *
      * @return false|int
      *                  false is returned if the given value does not contain the unescaped symbol.
