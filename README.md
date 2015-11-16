@@ -31,7 +31,7 @@ getEscapedSymbolPositions
 
 Returns the positions of the escaped symbols in a given string, or false if there is no escaped symbol in the string or if there is an error.
 
-```
+```php
 false|array:positions       getEscapedSymbolPositions( str:string, str:symbol, int:offset=0, bool:modeRecursive = true, str:escSymbol=\ )
 ```
 
@@ -63,7 +63,7 @@ getNextUnescapedSymbolPos
 
 Returns the position of the next unescaped given symbol, or false.
 
-```
+```php
 int|false       getNextUnescapedSymbolPos ( str:string, str:symbol, int:startPos=0, bool:modeRecursive=true, str:escSymbol='\\' )
 ```
 
@@ -77,7 +77,7 @@ isEscapedPos
 Returns whether or not the given position of the haystack is escaped.
 
 
-```
+```php
 bool        isEscapedPos ( str:haystack, int:pos, bool:modeRecursive, str:escSymbol=\ )
 ```
 
