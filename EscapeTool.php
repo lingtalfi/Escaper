@@ -67,6 +67,27 @@ class EscapeTool
 
 
     /**
+     * Returns the positions of the unescaped symbols in a given string, or false if there is no unescaped symbol
+     * in the string or if there is an error.
+     *
+     * @return false|array
+     */
+    public static function getUnescapedSymbolPositions($string, $symbol, $offset = 0, $modeRecursive = true, $escSymbol = '\\')
+    {
+        $ret = false;
+        $pos = StringTool::strPosAll($string, $symbol, $offset);
+        if ($pos) {
+            foreach ($pos as $p) {
+                if (false === self::isEscapedPos($string, $p, $modeRecursive, $escSymbol)) {
+                    $ret[] = $p;
+                }
+            }
+        }
+        return $ret;
+    }
+
+
+    /**
      * Returns whether or not the given position of the haystack is escaped.
      */
     public static function isEscapedPos($haystack, $pos, $modeRecursive = true, $escSymbol = '\\')

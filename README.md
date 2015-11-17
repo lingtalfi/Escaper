@@ -68,6 +68,35 @@ int|false       getNextUnescapedSymbolPos ( str:string, str:symbol, int:startPos
 ```
 
 
+getUnescapedSymbolPositions
+-----------------------
+2015-11-17
+
+
+Returns the positions of the unescaped symbols in a given string, or false if there is no unescaped symbol in the string or if there is an error.
+
+```php
+false|array:positions       getUnescapedSymbolPositions( str:string, str:symbol, int:offset=0, bool:modeRecursive = true, str:escSymbol=\ )
+```
+
+### Examples
+
+```php
+<?php
+
+
+use Escaper\EscapeTool;
+
+require_once "bigbang.php";
+
+$string = 'He"ll"o \"there';
+$pos = EscapeTool::getUnescapedSymbolPositions($string, '"');
+a($pos);  // prints [2,5]
+
+```
+
+
+
 
 isEscapedPos
 ---------------
@@ -98,6 +127,10 @@ Dependencies
 
 History Log
 ------------------
+    
+- 1.3.0 -- 2015-11-17
+
+    - add getUnescapedSymbolPositions  
     
 - 1.2.0 -- 2015-11-16
 
