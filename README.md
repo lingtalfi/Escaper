@@ -112,6 +112,29 @@ bool        isEscapedPos ( str:haystack, int:pos, bool:modeRecursive, str:escSym
 
 
 
+unescape
+---------------
+2015-11-18
+
+
+Unescapes the given symbols of a string.
+
+
+```php
+bool        unescape( str:string, array:symbols, bool:modeRecursive = true, str:escSymbol = '\\')
+```
+
+```php
+<?php
+
+
+use Escaper\EscapeTool;
+
+require_once "bigbang.php";
+
+a(EscapeTool::unescape('abc\"def', ['"'])); // abc"def
+```
+
 
 
 
@@ -127,6 +150,11 @@ Dependencies
 
 History Log
 ------------------
+    
+- 1.4.0 -- 2015-11-18
+
+    - add unescape  
+    
     
 - 1.3.0 -- 2015-11-17
 

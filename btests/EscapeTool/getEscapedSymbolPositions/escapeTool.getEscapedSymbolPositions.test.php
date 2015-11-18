@@ -10,9 +10,6 @@ use PhpBeast\Tool\ComparisonErrorTableTool;
 require_once "bigbang.php";
 
 
-//------------------------------------------------------------------------------/
-// EXHAUSTING TEST DEMO
-//------------------------------------------------------------------------------/
 $agg = AuthorTestAggregator::create();
 
 $a = [

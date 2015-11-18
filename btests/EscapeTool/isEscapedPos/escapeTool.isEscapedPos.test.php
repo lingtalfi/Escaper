@@ -9,9 +9,6 @@ use PhpBeast\PrettyTestInterpreter;
 require_once "bigbang.php";
 
 
-//------------------------------------------------------------------------------/
-// EXHAUSTING TEST DEMO
-//------------------------------------------------------------------------------/
 $agg = AuthorTestAggregator::create();
 
 $a = [

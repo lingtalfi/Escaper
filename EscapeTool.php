@@ -130,4 +130,68 @@ class EscapeTool
         return $ret;
     }
 
+
+    /**
+     * Unescapes the given symbols of a string.
+     */
+    public static function unescape($string, array $symbols, $modeRecursive = true, $escSymbol = '\\')
+    {
+        if (true === $modeRecursive) {
+            /**
+             * It unescapes the symbols first,
+             * then it resolve consecutive escSymbols, because the escSymbol escapes itself.
+             *              To do so, for every x consecutive backslashes detected:
+             *                      if x is even, the x backslashes are replaced by x/2 backslashes
+             *                      if x is odd, the x backslashes are replaced by (x+1)/2 backslashes
+             *
+             *
+             */
+
+
+            $symbols = array_unique($symbols);
+            $escLen = mb_strlen($escSymbol);
+            /**
+             * Unescaping symbols first
+             */
+            foreach ($symbols as $symbol) {
+                if (false !== $pos = self::getEscapedSymbolPositions($string, $symbol, 0, $modeRecursive, $escSymbol)) {
+                    $offset = 0;
+                    // removing one preceding escSymbol
+                    foreach ($pos as $p) {
+                        $p = $p - $offset;
+                        $string = mb_substr($string, 0, $p - $escLen) . mb_substr($string, $p);
+                        $offset += $escLen;
+                    }
+                }
+            }
+
+            /**
+             * Now unescape the escSymbol itself
+             */
+            if (false !== mb_strpos($string, $escSymbol . $escSymbol)) {
+                $len = strlen($escSymbol);
+                $string = preg_replace_callback('!(?:' . preg_quote($escSymbol, '!') . ')+!', function ($match) use ($len, $escSymbol) {
+                    $escSymbols = $match[0];
+                    $nbSymbols = strlen($escSymbols) / $len;
+                    if (1 === $nbSymbols % 2) {
+                        $nbSymbols++;
+                    }
+                    if ($nbSymbols > 1) {
+                        $nbSymbols /= 2;
+                    }
+                    return str_repeat($escSymbol, $nbSymbols);
+                }, $string);
+            }
+        }
+        else{
+            $symbols = array_unique($symbols);
+            foreach ($symbols as $symbol) {
+                $string = str_replace($escSymbol . $symbol, $symbol, $string);
+            }
+        }
+
+
+        return $string;
+    }
+
 }
