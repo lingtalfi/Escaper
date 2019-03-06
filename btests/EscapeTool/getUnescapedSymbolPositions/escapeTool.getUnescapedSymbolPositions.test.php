@@ -1,11 +1,11 @@
 <?php
 
 
-use Escaper\EscapeTool;
-use PhpBeast\AuthorTestAggregator;
-use PhpBeast\Exception\BeastNotApplicableException;
-use PhpBeast\PrettyTestInterpreter;
-use PhpBeast\Tool\ComparisonErrorTableTool;
+use Ling\Escaper\EscapeTool;
+use Ling\PhpBeast\AuthorTestAggregator;
+use Ling\PhpBeast\Exception\BeastNotApplicableException;
+use Ling\PhpBeast\PrettyTestInterpreter;
+use Ling\PhpBeast\Tool\ComparisonErrorTableTool;
 
 require_once "bigbang.php";
 

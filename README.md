@@ -17,7 +17,7 @@ Install
 
 Using the [uni tool](https://github.com/lingtalfi/universe-naive-importer)
 ```bash
-uni import Escaper
+uni import Ling/Escaper
 ```
 
 
@@ -55,7 +55,7 @@ false|array:positions       getEscapedSymbolPositions( str:string, str:symbol, i
 <?php
 
 
-use Escaper\EscapeTool;
+use Ling\Escaper\EscapeTool;
 
 require_once "bigbang.php";
 
@@ -99,7 +99,7 @@ false|array:positions       getUnescapedSymbolPositions( str:string, str:symbol,
 <?php
 
 
-use Escaper\EscapeTool;
+use Ling\Escaper\EscapeTool;
 
 require_once "bigbang.php";
 
@@ -142,7 +142,7 @@ bool        unescape( str:string, array:symbols, bool:modeRecursive = true, str:
 <?php
 
 
-use Escaper\EscapeTool;
+use Ling\Escaper\EscapeTool;
 
 require_once "bigbang.php";
 

@@ -1,10 +1,10 @@
 <?php
 
 
-use Escaper\EscapeTool;
-use PhpBeast\AuthorTestAggregator;
-use PhpBeast\Exception\BeastNotApplicableException;
-use PhpBeast\PrettyTestInterpreter;
+use Ling\Escaper\EscapeTool;
+use Ling\PhpBeast\AuthorTestAggregator;
+use Ling\PhpBeast\Exception\BeastNotApplicableException;
+use Ling\PhpBeast\PrettyTestInterpreter;
 
 require_once "bigbang.php";
 

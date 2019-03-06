@@ -1,6 +1,6 @@
 <?php
 
-namespace Escaper;
+namespace Ling\Escaper;
 
 /*
  * LingTalfi 2015-11-13
@@ -14,7 +14,7 @@ namespace Escaper;
  * 
  */
 
-use Bat\StringTool;
+use Ling\Bat\StringTool;
 
 class EscapeTool
 {
